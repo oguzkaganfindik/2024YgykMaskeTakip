@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business.Concrete;
+using Entities.Concrete;
+using System;
 
 namespace Workaround
 {
@@ -6,37 +8,16 @@ namespace Workaround
     {
         static void Main(string[] args)
         {
-            //Degiskenler();
+            Person person1 = new Person();
+            person1.NationalIdentity = 12345678910;
+            person1.FirstName = "Oğuz";
+            person1.LastName = "Kağan";
+            person1.DateOfBirthYear = 1234;
 
-            Vatandas vatandas1 = new Vatandas();
+            PttManager pttManager = new PttManager(new PersonManager());
+            pttManager.GiveMask(person1);
 
             Console.ReadLine();
         }
-
-        private static void Degiskenler()
-        {
-            string mesaj = "Merhaba";
-            double tutar = 100000; // db'den gelir
-            int sayi = 100;
-            bool girisYapmisMi = false;
-
-            string ad = "Engin";
-            string soyad = "Demiroğ";
-            int dogumYili = 1985;
-            long tcNo = 12345678910;
-
-
-            Console.WriteLine(tutar * 1.18);
-            Console.WriteLine(tutar * 1.18);
-        }
-    }
-
-    //PascalCasing
-    public class Vatandas
-    {
-        public string Ad { get; set; }
-        public string Soyad { get; set; }
-        public int DogumYili { get; set; }
-        public long TcNo { get; set; }
     }
 }
